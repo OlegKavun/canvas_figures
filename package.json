@@ -1,0 +1,29 @@
+    {
+    "name": "Canvas",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+        "lint": "tslint -p tsconfig.json",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "tsc"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://kavunolegs:1324ZXCzxc@gitlab.com/kavunolegs/canvas_figures.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://gitlab.com/kavunolegs/canvas_figures/issues"
+    },
+    "homepage": "https://gitlab.com/kavunolegs/canvas_figures#readme",
+    "devDependencies": {
+        "prettier": "^2.2.1",
+        "tslint": "^6.1.3",
+        "tslint-config-prettier": "^1.18.0",
+        "typescript": "^4.2.3"
+    }
+    }
