@@ -1,0 +1,89 @@
+body {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: rgb(144, 140, 175);
+}
+
+h1 {
+    margin-left: -100px;
+    text-align: center;
+    color: aliceblue;
+}
+
+#canvas {
+    display: block;
+    background-color: #fff;
+}
+
+.wrapper {
+    border: 8px solid rgb(48, 212, 185);
+    border-radius: 34px;
+    padding: 60px;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(195, 217, 228);
+}
+
+.menu {
+    width: 200px;
+    margin-right: 30px;
+}
+
+.choice {
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+}
+
+#inputs {
+    width: 100%;
+}
+
+.point {
+    width: 100%;
+    margin: 25px 0;
+}
+
+.point > input[type="range"] {
+    width: 100%;
+}
+
+
+.calculating {
+    margin-left: 45px;
+    width: 300px;
+}
+
+.calculate {
+    margin: 25px 15px;
+    font-size: 18px;
+    outline: none;
+    cursor: pointer;
+    background-color: rgb(8, 8, 8);
+    color: #fff;
+    font-weight: bold;
+}
+
+.out {
+    font-size: 30px;
+}
+
+.canvas-wrap {
+    position: relative;
+}
+
+.dot {
+    cursor: default;
+    font-size: 10px;
+    text-align: center;
+    font-weight: bold;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #000;
+    color: #fff;
+    left: 0;
+    top: 0;
+}

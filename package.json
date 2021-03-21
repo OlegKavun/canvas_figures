@@ -7,12 +7,14 @@
         "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
         "lint": "tslint -p tsconfig.json",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "tsc"
+        "build": "tsc",
+        "watch": "tsc -w"
     },
     "repository": {
         "type": "git",
         "url": "git+https://kavunolegs:1324ZXCzxc@gitlab.com/kavunolegs/canvas_figures.git"
     },
+    "type": "module",
     "keywords": [],
     "author": "",
     "license": "ISC",
