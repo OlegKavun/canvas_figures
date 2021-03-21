@@ -12,5 +12,7 @@ export declare class CanvasRender {
     createPoints: (points: number) => void;
     paint: () => void;
     calculateArea: () => void;
+    calculatePerimeter: (radius?: any) => void;
+    calculateDistance: (elem1: number, elem2: number) => number;
     clearArea: () => void;
 }

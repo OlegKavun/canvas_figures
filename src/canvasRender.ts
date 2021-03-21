@@ -49,8 +49,9 @@ HTMLCanvasElement;
         this.ctx.beginPath()
 
         if (this.strategy === 'circle') {
-            let dist: number = Math.sqrt( Math.pow((this.corners[0].x-this.corners[1].x), 2) + Math.pow((this.corners[0].y-this.corners[1].y), 2))
+            let dist: number = this.calculateDistance(0, 1)
             this.ctx.arc(this.corners[0].x, this.corners[0].y, dist, 0,Math.PI*2, true)
+            this.calculatePerimeter(dist)
         } else {
             this.ctx.moveTo(this.corners[0].x, this.corners[0].y)
 
@@ -59,6 +60,7 @@ HTMLCanvasElement;
             }
 
             this.ctx.lineTo(this.corners[0].x, this.corners[0].y)
+            this.calculatePerimeter()
         }
 
         this.ctx.lineWidth = 2
@@ -75,6 +77,27 @@ HTMLCanvasElement;
 
         for(var i = length, j = 0; i; i--) if(data[i] !== 0) j++
         (<HTMLSpanElement>document.querySelector('.area-result')).innerText = '' + j
+    }
+
+    calculatePerimeter = (radius?: any): void => {
+        let value: number | string = 0
+
+        if (this.strategy === 'circle') {
+            value = 2*Math.PI*radius
+        } else {
+            for(let i = 0; i < this.corners.length-1; i++) {
+                this.calculateDistance(i, i+1)
+                value += this.calculateDistance(i, i+1)
+            }
+            
+            value += this.calculateDistance(this.corners.length-1, 0)
+        }
+
+        (<HTMLSpanElement>document.querySelector('.perimeter-result')).innerText = '' + Math.round(value)
+    }
+
+    calculateDistance = (elem1: number, elem2: number): number => {
+        return Math.sqrt( Math.pow((this.corners[elem1].x-this.corners[elem2].x), 2) + Math.pow((this.corners[elem1].y-this.corners[elem2].y), 2))
     }
 
     clearArea = (): void => {

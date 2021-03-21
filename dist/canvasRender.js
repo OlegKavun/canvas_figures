@@ -36,8 +36,9 @@ export class CanvasRender {
         this.paint = () => {
             this.ctx.beginPath();
             if (this.strategy === 'circle') {
-                let dist = Math.sqrt(Math.pow((this.corners[0].x - this.corners[1].x), 2) + Math.pow((this.corners[0].y - this.corners[1].y), 2));
+                let dist = this.calculateDistance(0, 1);
                 this.ctx.arc(this.corners[0].x, this.corners[0].y, dist, 0, Math.PI * 2, true);
+                this.calculatePerimeter(dist);
             }
             else {
                 this.ctx.moveTo(this.corners[0].x, this.corners[0].y);
@@ -45,6 +46,7 @@ export class CanvasRender {
                     this.ctx.lineTo(this.corners[i].x, this.corners[i].y);
                 }
                 this.ctx.lineTo(this.corners[0].x, this.corners[0].y);
+                this.calculatePerimeter();
             }
             this.ctx.lineWidth = 2;
             this.ctx.fillStyle = "yellow";
@@ -60,6 +62,23 @@ export class CanvasRender {
                 if (data[i] !== 0)
                     j++;
             document.querySelector('.area-result').innerText = '' + j;
+        };
+        this.calculatePerimeter = (radius) => {
+            let value = 0;
+            if (this.strategy === 'circle') {
+                value = 2 * Math.PI * radius;
+            }
+            else {
+                for (let i = 0; i < this.corners.length - 1; i++) {
+                    this.calculateDistance(i, i + 1);
+                    value += this.calculateDistance(i, i + 1);
+                }
+                value += this.calculateDistance(this.corners.length - 1, 0);
+            }
+            document.querySelector('.perimeter-result').innerText = '' + Math.round(value);
+        };
+        this.calculateDistance = (elem1, elem2) => {
+            return Math.sqrt(Math.pow((this.corners[elem1].x - this.corners[elem2].x), 2) + Math.pow((this.corners[elem1].y - this.corners[elem2].y), 2));
         };
         this.clearArea = () => {
             this.removePoints();
